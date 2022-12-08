@@ -15,4 +15,5 @@ jobs:
       - name: Run Tests
         run: |
           npm install
+          chmod -R a+x node_modules 
           npm test
