@@ -7,8 +7,8 @@ const middleware = {
             next();
         } else {
             res.statusCode = 403;
-            res.json = "Access Forbidden!";
-            // res.json("Access Forbidden!");
+            // res.json = "Access Forbidden!";
+            //res.json("Access Forbidden!");
         }
     },
     validateBody : function(req, res, next) {
