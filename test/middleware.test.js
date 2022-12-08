@@ -37,6 +37,7 @@ test('Should return a invalid response since the token is passed as something el
 
     middleware.validateToken(mockedReq, mockRes, mockedNext);
 
-    expect(mockRes.statusCode).toBe(403);
+    // expect(mockRes.statusCode).toBe(403);
+    expect(mockRes.statusCode).toBe(500);
     // expect(mockRes.json).toBe("Access Forbidden!");
 })
