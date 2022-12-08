@@ -21,6 +21,6 @@
     "@babel/preset-env": "^7.20.2"
   },
   "jest": {
-    "collectCoverage":true
+    "collectCoverage":false
   }
 }
