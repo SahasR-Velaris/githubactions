@@ -38,7 +38,7 @@ describe('Test Suite #1', () => {
     
         middleware.validateToken(mockedReq, mockRes, mockedNext);
         expect(mockRes.statusCode).toBe(403);
-        expect(mockedNext).toBeCalled();
+        expect(mockedNext).not.toBeCalled();
         // expect(mockRes.statusCode).toBe(500);
         // expect(mockRes.json).toBe("Access Forbidden!");
     })
