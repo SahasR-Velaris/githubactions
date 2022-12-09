@@ -18,26 +18,31 @@ const invalidMockReq = () => {
     return req;
 }
 
+describe('Test Suite #1', () => {
+    test('Should return a valid response since the token is passed as secretpass', () => {
+        const mockedReq = validMockReq();
+        const mockRes = {};
+        const mockedNext = jest.fn();
+    
+        middleware.validateToken(mockedReq, mockRes, mockedNext);
 
-test('Should return a valid response since the token is passed as secretpass', () => {
-    const mockedReq = validMockReq();
-    const mockRes = {};
-    const mockedNext = jest.fn();
-
-    middleware.validateToken(mockedReq, mockRes, mockedNext);
-
-    expect(mockRes.statusCode).toBeUndefined();
-    expect(mockRes.json).toBeUndefined();
+        expect(mockedNext).toBeCalled();
+        expect(mockRes.statusCode).toBeUndefined();
+        expect(mockRes.json).toBeUndefined();
+    })
+    
+    test('Should return a invalid response since the token is passed as something else', () => {
+        const mockedReq = invalidMockReq();
+        const mockRes = {};
+        const mockedNext = jest.fn();
+    
+        middleware.validateToken(mockedReq, mockRes, mockedNext);
+        expect(mockRes.statusCode).toBe(403);
+        expect(mockedNext).not.toBeCalled();
+        // expect(mockRes.statusCode).toBe(500);
+        // expect(mockRes.json).toBe("Access Forbidden!");
+    })
 })
 
-test('Should return a invalid response since the token is passed as something else', () => {
-    const mockedReq = invalidMockReq();
-    const mockRes = {};
-    const mockedNext = jest.fn();
 
-    middleware.validateToken(mockedReq, mockRes, mockedNext);
 
-    // expect(mockRes.statusCode).toBe(403);
-    expect(mockRes.statusCode).toBe(500);
-    // expect(mockRes.json).toBe("Access Forbidden!");
-})
